@@ -33,13 +33,6 @@ if st.session_state.get("page") != "Get Started":
         </div>
     """, unsafe_allow_html=True)
 
-    # Simulated overlay using centered column
-    col1, col2, col3 = st.columns([3, 1, 3])
-    with col2:
-        if st.button("Get Started"):
-            st.session_state.page = "Get Started"
-            st.rerun()
-
 # Simulated overlay using centered column
 col1, col2, col3 = st.columns([3, 1, 3])
 with col2:
