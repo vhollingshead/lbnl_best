@@ -51,7 +51,7 @@ def home():
     with col2:
         if st.button("Get Started"):
             st.session_state.page = "Get Started"
-            st.experimental_rerun()
+            st.rerun()
 
 def main():
     with st.sidebar:
