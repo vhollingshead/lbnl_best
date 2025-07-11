@@ -74,21 +74,6 @@ def main():
         icons=["house", "info-circle", "graph-up-arrow", "clipboard-data"],
         orientation="horizontal",
         default_index=["Home", "About Us", "Methodology", "Get Started"].index(st.session_state.page),
-        styles={
-            "container": {"padding": "5px", "background-color": "#f0f2f6"},
-            "icon": {"color": "black", "font-size": "18px"},
-            "nav-link": {
-                "font-size": "16px",
-                "text-align": "center",
-                "margin": "0px",
-                "color": "black",
-                "background-color": "#e0e0e0"
-            },
-            "nav-link-selected": {
-                "background-color": "#4F7849",
-                "color": "white"
-            }
-        }
     )
 
     # Only update session state if selection has changed
