@@ -3,4 +3,3 @@ streamlit-option-menu
 pandas
 matplotlib
 fpdf
-os
