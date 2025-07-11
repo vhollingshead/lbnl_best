@@ -8,7 +8,7 @@ st.set_page_config(layout="wide")
 st.markdown("""
     <style>
     body, .main, .block-container, header, footer, .stSidebar {
-        background-color: #1c3c2c !important;
+        background-color: #1d392b !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -24,7 +24,7 @@ st.markdown(f"""
         background-image: url('data:image/png;base64,{encoded}');
         background-size: cover;
         background-position: center;
-        height: 700px;
+        height: 550px;
         display: flex;
         flex-direction: column;
         justify-content: center;
