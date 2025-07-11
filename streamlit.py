@@ -1,15 +1,30 @@
 import streamlit as st
 from PIL import Image
-import streamlit as st
+
+st.set_page_config(layout="wide")
 
 image = Image.open("best.png")
 st.image(image, use_column_width=True)
 
-col1, col2, col3 = st.columns([3, 1, 3])
-with col2:
-    if st.button("Get Started"):
-        st.session_state.page = "Get Started"
-        st.rerun()
+def get_started():
+    st.title("Get Started")
+    st.write("Follow these steps to begin your journey...")
+
+
+if "page" not in st.session_state:
+    st.session_state.page = "Home"
+
+if st.session_state.page == "Home":
+    col1, col2, col3 = st.columns([3, 1, 3])
+    with col2:
+        if st.button("Get Started"):
+            st.session_state.page = "Get Started"
+            st.rerun()
+
+# Show Get Started content
+if st.session_state.page == "Get Started":
+    get_started()
+
 
 
 # import streamlit as st
