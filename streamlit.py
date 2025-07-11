@@ -56,8 +56,8 @@ def home():
 
 def main():
     if st.session_state.page == "Get Started":
-    get_started()
-    return
+        get_started()
+        return
 
     with st.sidebar:
         selected = option_menu(
