@@ -59,41 +59,35 @@ def main():
         get_started()
         return
 
-    with st.sidebar:
-        selected = option_menu(
-            "Navigation",
-            ["Home", "About Us", "Methodology", "Get Started"],
-            icons=["house", "info-circle", "graph-up-arrow", "clipboard-data"],
-            default_index=0,
-            styles={
-                "container": {"padding": "5px", "background-color": "#f0f2f6"},
-                "icon": {"color": "black", "font-size": "18px"},
-                "nav-title": {
-                    "color": "black",
-                    "font-size": "18px",
-                    "font-weight": "bold",
-                    "text-align": "left"
-                },
-                "nav-link": {
-                    "font-size": "16px",
-                    "text-align": "left",
-                    "margin": "0px",
-                    "color": "black",
-                    "background-color": "#e0e0e0"
-                },
-                "nav-link-selected": {
-                    "background-color": "#4F7849",
-                    "color": "white"
-                }
-            }
-        )
-
     if "page" not in st.session_state:
-        st.session_state.page = selected
+        st.session_state.page = "Home"
 
-    if st.session_state.page == "Get Started" and selected != "Get Started":
-        get_started()
-    elif selected == "Home":
+    selected = option_menu(
+        menu_title=None,
+        options=["Home", "About Us", "Methodology", "Get Started"],
+        icons=["house", "info-circle", "graph-up-arrow", "clipboard-data"],
+        orientation="horizontal",
+        default_index=["Home", "About Us", "Methodology", "Get Started"].index(st.session_state.page),
+        styles={
+            "container": {"padding": "5px", "background-color": "#f0f2f6"},
+            "icon": {"color": "black", "font-size": "18px"},
+            "nav-link": {
+                "font-size": "16px",
+                "text-align": "center",
+                "margin": "0px",
+                "color": "black",
+                "background-color": "#e0e0e0"
+            },
+            "nav-link-selected": {
+                "background-color": "#4F7849",
+                "color": "white"
+            }
+        }
+    )
+
+    st.session_state.page = selected
+
+    if selected == "Home":
         home()
     elif selected == "About Us":
         about_us()
@@ -103,74 +97,4 @@ def main():
         get_started()
 
 if __name__ == "__main__":
-    if "page" not in st.session_state:
-        st.session_state.page = "Home"
     main()
-
-
-
-# ######
-# import streamlit as st
-# from streamlit_option_menu import option_menu
-
-# # Use Streamlit's built-in page routing
-# st.set_page_config(layout="wide")
-
-# def about_us():
-#     # Header Section
-#     st.title("About Us")
-#     st.write("This is the about us page.")
-
-# def methodology():
-#     st.title("Methodology")
-#     st.write("This is the methodology page.")
-
-# def get_started():
-#     st.title("Get Started")
-#     st.write("This is the get started page.")
-
-
-
-# def main():
-#     with st.sidebar:
-#         selected = option_menu(
-#             "Navigation",
-#             ["About Us", "Methodology", "Get Started"],
-#             icons=["house", "graph-up-arrow", "clipboard-data", "lightbulb", "info-circle"],
-#             menu_icon="cast",
-#             default_index=0,
-#             styles={
-#                 "container": {"padding": "5px", "background-color": "#f0f2f6"},
-#                 "icon": {"color": "black", "font-size": "18px"},
-#                 "nav-title": {  # This controls the "Navigation" label style
-#                     "color": "black",
-#                     "font-size": "18px",
-#                     "font-weight": "bold",
-#                     "text-align": "left"
-#                 },
-#                 "nav-link": {
-#                     "font-size": "16px",
-#                     "text-align": "left",
-#                     "margin": "0px",
-#                     "color": "black",
-#                     "background-color": "#e0e0e0"
-#                 },
-#                 "nav-link-selected": {
-#                     "background-color": "#4F7849",
-#                     "color": "white"
-#                 }
-#             }
-#         )
-
-#     # Navigate to the selected page
-#     if selected == "About Us":
-#         about_us()
-#     elif selected == "Methodology":
-#         methodology()
-#     elif selected == "Get Started":
-#         get_started()
-
-# if __name__ == "__main__":
-#     main()
-
-# ######
