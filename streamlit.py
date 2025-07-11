@@ -4,7 +4,7 @@ from PIL import Image
 st.set_page_config(layout="wide")
 
 image = Image.open("best.png")
-st.image(image, use_column_width=True)
+st.image(image, use_container_width=True)
 
 def get_started():
     st.title("Get Started")
