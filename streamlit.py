@@ -50,7 +50,7 @@ def home():
     col1, col2, col3 = st.columns([3, 1, 3])
     with col2:
         if st.button("Get Started"):
-            get_started()
+            st.session_state.page = "Get Started"
 
 def main():
     with st.sidebar:
