@@ -4,6 +4,20 @@ import base64
 
 st.set_page_config(layout="wide")
 
+# set background color
+st.markdown("""
+    <style>
+    .main {
+        background-color: #1D3B2F;
+    }
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
 # Load and encode image
 with open("best.png", "rb") as img_file:
     encoded = base64.b64encode(img_file.read()).decode()
