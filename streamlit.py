@@ -64,28 +64,13 @@ def main():
     # Display a banner image above the navigation menu
     banner_image_path = "placeholder_image.png"
     with open(banner_image_path, "rb") as image_file:
-        encoded_banner = base64.b64encode(image_file.read()).decode()
+        encoded_banner = base64.b64encode(image_file.read()).decode() 
 
-    st.markdown(f"""
-        <style>
-    .sticky-banner {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        background-color: white;
-        }
-        .sticky-banner img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        </style>
-        <div class="sticky-banner">
-        <img src='data:image/png;base64,{encoded_banner}'>
-    </div>
-        """, unsafe_allow_html=True)    
-
-    
+        st.markdown(f"""
+        <div style='text-align: center; padding-bottom: 10px;'>
+        <img src='data:image/png;base64,{encoded_banner}' style='width: 100%; height: auto;'>
+        </div>
+        """, unsafe_allow_html=True)
 
     selected = option_menu(
         menu_title=None,
