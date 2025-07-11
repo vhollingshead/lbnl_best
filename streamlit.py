@@ -29,7 +29,7 @@ st.markdown(f"""
         flex-direction: column;
         justify-content: center;
         align-items: center;">
-        <div style="margin-top: 180px;"></div>
+        <div style="margin-top: 0px;"></div>
     </div>
 """, unsafe_allow_html=True)
 
