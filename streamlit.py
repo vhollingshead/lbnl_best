@@ -52,11 +52,13 @@ def home():
         if st.button("Get Started"):
             st.session_state.page = "Get Started"
 
-if st.session_state.page == "Get Started":
+
+
+def main():
+    if st.session_state.page == "Get Started":
     get_started()
     return
 
-def main():
     with st.sidebar:
         selected = option_menu(
             "Navigation",
