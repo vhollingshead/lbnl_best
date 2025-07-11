@@ -57,8 +57,8 @@ def main():
     with st.sidebar:
         selected = option_menu(
             "Navigation",
-            ["About Us", "Methodology", "Get Started"],
-            icons=["info-circle", "graph-up-arrow", "clipboard-data"],
+            ["Home", "About Us", "Methodology", "Get Started"],
+            icons=["house", "info-circle", "graph-up-arrow", "clipboard-data"],
             default_index=0,
             styles={
                 "container": {"padding": "5px", "background-color": "#f0f2f6"},
@@ -85,7 +85,9 @@ def main():
 
     st.session_state.page = selected
 
-    if selected == "About Us":
+    if selected == "Home":
+        display_home()
+    elif selected == "About Us":
         about_us()
     elif selected == "Methodology":
         methodology()
