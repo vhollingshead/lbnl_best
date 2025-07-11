@@ -62,7 +62,7 @@ def main():
         return
     
     # Display a banner image above the navigation menu
-    banner_image_path = "banner_image.png"
+    banner_image_path = "placeholder_image.png"
     with open(banner_image_path, "rb") as image_file:
         encoded_banner = base64.b64encode(image_file.read()).decode()
 
