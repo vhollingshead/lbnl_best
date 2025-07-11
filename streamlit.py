@@ -4,20 +4,19 @@ import base64
 
 st.set_page_config(layout="wide")
 
-# Set custom background color
-st.markdown("""
-    <style>
-    body, .main, .block-container, header, footer, .stSidebar {
-        background-color: #1d392b !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # Load and encode image
 with open("best.png", "rb") as img_file:
     encoded = base64.b64encode(img_file.read()).decode()
 
 def home():
+    # Set custom background color
+    st.markdown("""
+        <style>
+        body, .main, .block-container, header, footer, .stSidebar {
+            background-color: #1d392b !important;
+        }
+        </style>
+    """, unsafe_allow_html=True)
     # Background image container with no padding
     st.markdown(f"""
         <div style="
