@@ -18,20 +18,44 @@ st.markdown("""
 with open("best.png", "rb") as img_file:
     encoded = base64.b64encode(img_file.read()).decode()
 
-# Background image container with padding
+# # Background image container with padding
+# st.markdown(f"""
+#     <div style="
+#         background-image: url('data:image/png;base64,{encoded}');
+#         background-size: cover;
+#         background-position: center;
+#         height: 100vh;
+#         display: flex;
+#         flex-direction: column;
+#         justify-content: center;
+#         align-items: center;">
+#         <div style="margin-top: 0px;"></div>
+#     </div>
+# """, unsafe_allow_html=True)
+
 st.markdown(f"""
-    <div style="
-        background-image: url('data:image/png;base64,{encoded}');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;">
-        <div style="margin-top: 0px;"></div>
-    </div>
-""", unsafe_allow_html=True)
+        <style>
+        .background {{
+            background-image: url("data:image/jpg;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }}
+        .overlay-text {{
+            font-size: 3em;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0;
+        }}
+        </style>
+        <div class="background"></div>
+    """, unsafe_allow_html=True)
 
 # Simulated overlay using centered column
 col1, col2, col3 = st.columns([3, 1, 3])
