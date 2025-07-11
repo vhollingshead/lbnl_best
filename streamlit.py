@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-from PIL import Image
-import base64
+# from PIL import Image
+# import base64
 
 # Use Streamlit's built-in page routing
 st.set_page_config(layout="wide")
