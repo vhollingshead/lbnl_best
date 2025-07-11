@@ -51,26 +51,22 @@ def home():
     with col2:
         if st.button("Get Started"):
             st.session_state.page = "Get Started"
-
-
+            st.rerun()
 
 def main():
-    if "page" not in st.session_state:
-        st.session_state.page = "Home"
-    if st.session_state.page == "Get Started":
-        get_started()
-        return
-    
     # Display a banner image above the navigation menu
     banner_image_path = "banner_placeholder.png"
     with open(banner_image_path, "rb") as image_file:
-        encoded_banner = base64.b64encode(image_file.read()).decode() 
+        encoded_banner = base64.b64encode(image_file.read()).decode()
 
-        st.markdown(f"""
+    st.markdown(f"""
         <div style='text-align: center; padding-bottom: 10px;'>
-        <img src='data:image/png;base64,{encoded_banner}' style='width: 100%; height: auto;'>
+            <img src='data:image/png;base64,{encoded_banner}' style='width: 100%; height: auto;'>
         </div>
-        """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+
+    if "page" not in st.session_state:
+        st.session_state.page = "Home"
 
     selected = option_menu(
         menu_title=None,
@@ -95,15 +91,19 @@ def main():
         }
     )
 
-    st.session_state.page = selected
+    # Only update session state if selection has changed
+    if selected != st.session_state.page:
+        st.session_state.page = selected
+        st.rerun()
 
-    if selected == "Home":
+    # Render the selected page
+    if st.session_state.page == "Home":
         home()
-    elif selected == "About Us":
+    elif st.session_state.page == "About Us":
         about_us()
-    elif selected == "Methodology":
+    elif st.session_state.page == "Methodology":
         methodology()
-    elif selected == "Get Started":
+    elif st.session_state.page == "Get Started":
         get_started()
 
 if __name__ == "__main__":
