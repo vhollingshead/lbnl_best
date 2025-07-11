@@ -24,7 +24,7 @@ st.markdown(f"""
         background-image: url('data:image/png;base64,{encoded}');
         background-size: cover;
         background-position: center;
-        height: 550px;
+        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
