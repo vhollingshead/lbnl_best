@@ -16,7 +16,51 @@ def get_started():
     st.title("Get Started")
     st.write("Follow these steps to begin your journey...")
 
-def display_home():
+
+def main():
+    with st.sidebar:
+        selected = option_menu(
+            "Navigation",
+            ["Home", "About Us", "Methodology", "Get Started"],
+            icons=["house", "info-circle", "graph-up-arrow", "clipboard-data"],
+            default_index=0,
+            styles={
+                "container": {"padding": "5px", "background-color": "#f0f2f6"},
+                "icon": {"color": "black", "font-size": "18px"},
+                "nav-title": {
+                    "color": "black",
+                    "font-size": "18px",
+                    "font-weight": "bold",
+                    "text-align": "left"
+                },
+                "nav-link": {
+                    "font-size": "16px",
+                    "text-align": "left",
+                    "margin": "0px",
+                    "color": "black",
+                    "background-color": "#e0e0e0"
+                },
+                "nav-link-selected": {
+                    "background-color": "#4F7849",
+                    "color": "white"
+                }
+            }
+        )
+
+    st.session_state.page = selected
+
+    if selected == "Home":
+        main()
+    elif selected == "About Us":
+        about_us()
+    elif selected == "Methodology":
+        methodology()
+    elif selected == "Get Started":
+        get_started()
+    else:
+        main()
+
+
     image_path = "placeholder_image.png"
     with open(image_path, "rb") as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode()
@@ -52,49 +96,6 @@ def display_home():
         if st.button("Get Started"):
             st.session_state.page = "Get Started"
             st.experimental_rerun()
-
-def main():
-    with st.sidebar:
-        selected = option_menu(
-            "Navigation",
-            ["Home", "About Us", "Methodology", "Get Started"],
-            icons=["house", "info-circle", "graph-up-arrow", "clipboard-data"],
-            default_index=0,
-            styles={
-                "container": {"padding": "5px", "background-color": "#f0f2f6"},
-                "icon": {"color": "black", "font-size": "18px"},
-                "nav-title": {
-                    "color": "black",
-                    "font-size": "18px",
-                    "font-weight": "bold",
-                    "text-align": "left"
-                },
-                "nav-link": {
-                    "font-size": "16px",
-                    "text-align": "left",
-                    "margin": "0px",
-                    "color": "black",
-                    "background-color": "#e0e0e0"
-                },
-                "nav-link-selected": {
-                    "background-color": "#4F7849",
-                    "color": "white"
-                }
-            }
-        )
-
-    st.session_state.page = selected
-
-    if selected == "Home":
-        display_home()
-    elif selected == "About Us":
-        about_us()
-    elif selected == "Methodology":
-        methodology()
-    elif selected == "Get Started":
-        get_started()
-    else:
-        display_home()
 
 if __name__ == "__main__":
     if "page" not in st.session_state:
