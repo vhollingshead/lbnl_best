@@ -4,15 +4,11 @@ import base64
 
 st.set_page_config(layout="wide")
 
-# set background color
+# Set custom background color
 st.markdown("""
     <style>
-    .main {
-        background-color: #1D3B2F;
-    }
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+    body, .main, .block-container, header, footer, .stSidebar {
+        background-color: #1D3B2F !important;
     }
     </style>
 """, unsafe_allow_html=True)
