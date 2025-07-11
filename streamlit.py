@@ -82,9 +82,12 @@ def main():
             }
         )
 
-    st.session_state.page = selected
+    if "page" not in st.session_state:
+        st.session_state.page = selected
 
-    if selected == "Home":
+    if st.session_state.page == "Get Started" and selected != "Get Started":
+        get_started()
+    elif selected == "Home":
         home()
     elif selected == "About Us":
         about_us()
