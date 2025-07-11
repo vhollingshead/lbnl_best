@@ -98,7 +98,7 @@ def main():
 
 if __name__ == "__main__":
     if "page" not in st.session_state:
-        st.session_state.page = "About Us"
+        st.session_state.page = "Home"
     main()
 
 
