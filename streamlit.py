@@ -1,29 +1,73 @@
 import streamlit as st
 from PIL import Image
+import base64
 
 st.set_page_config(layout="wide")
 
-image = Image.open("best.png")
-st.image(image, use_container_width=True)
+# Load and encode image
+with open("best.png", "rb") as img_file:
+    encoded = base64.b64encode(img_file.read()).decode()
 
+# Background image container with padding
+st.markdown(f"""
+    <div style="
+        background-image: url('data:image/png;base64,{encoded}');
+        background-size: cover;
+        background-position: center;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;">
+        <div style="margin-top: 180px;"></div>
+    </div>
+""", unsafe_allow_html=True)
+
+# Simulated overlay using centered column
+col1, col2, col3 = st.columns([3, 1, 3])
+with col2:
+    if st.button("Get Started"):
+        st.session_state.page = "Get Started"
+        st.rerun()
+
+# Page routing
 def get_started():
     st.title("Get Started")
     st.write("Follow these steps to begin your journey...")
 
-
-if "page" not in st.session_state:
-    st.session_state.page = "Home"
-
-if st.session_state.page == "Home":
-    col1, col2, col3 = st.columns([3, 1, 3])
-    with col2:
-        if st.button("Get Started"):
-            st.session_state.page = "Get Started"
-            st.rerun()
-
-# Show Get Started content
-if st.session_state.page == "Get Started":
+if st.session_state.get("page") == "Get Started":
     get_started()
+
+
+
+
+
+# import streamlit as st
+# from PIL import Image
+
+# st.set_page_config(layout="wide")
+
+# image = Image.open("best.png")
+# st.image(image, use_container_width=True)
+
+# def get_started():
+#     st.title("Get Started")
+#     st.write("Follow these steps to begin your journey...")
+
+
+# if "page" not in st.session_state:
+#     st.session_state.page = "Home"
+
+# if st.session_state.page == "Home":
+#     col1, col2, col3 = st.columns([3, 1, 3])
+#     with col2:
+#         if st.button("Get Started"):
+#             st.session_state.page = "Get Started"
+#             st.rerun()
+
+# # Show Get Started content
+# if st.session_state.page == "Get Started":
+#     get_started()
 
 
 
