@@ -58,6 +58,30 @@ def main():
     if st.session_state.page == "Get Started":
         get_started()
         return
+    
+    # Display a banner image above the navigation menu
+    banner_image_path = "banner_image.png"
+    with open(banner_image_path, "rb") as image_file:
+        encoded_banner = base64.b64encode(image_file.read()).decode()
+
+    st.markdown(f"""
+        <style>
+    .sticky-banner {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: white;
+        }
+        .sticky-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        </style>
+        <div class="sticky-banner">
+        <img src='data:image/png;base64,{encoded_banner}'>
+    </div>
+        """, unsafe_allow_html=True)    
 
     if "page" not in st.session_state:
         st.session_state.page = "Home"
