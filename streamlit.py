@@ -55,6 +55,8 @@ def home():
 
 
 def main():
+    if "page" not in st.session_state:
+        st.session_state.page = "Home"
     if st.session_state.page == "Get Started":
         get_started()
         return
@@ -83,8 +85,7 @@ def main():
     </div>
         """, unsafe_allow_html=True)    
 
-    if "page" not in st.session_state:
-        st.session_state.page = "Home"
+    
 
     selected = option_menu(
         menu_title=None,
