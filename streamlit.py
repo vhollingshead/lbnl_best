@@ -26,37 +26,52 @@ with open("landingpage_title.png", "rb") as img_file:
 
 def home():
     # Background image container with no padding
-    col1, col2 = st.columns([5, 7])
-    with col1:
+    st.markdown(f"""
+        <div style="
+            background-image: url('data:image/png;base64,{encoded}');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;">
+        </div>
+    """, unsafe_allow_html=True)
+
+    # Simulated overlay using centered column
+    col1, col2, col3 = st.columns([3, 1, 3])
+    with col2:
         st.markdown(f"""
-            <div style="
-                background-image: url('data:image/png;base64,{encoded_tree}');
-                background-size: cover;
-                background-position: center;
-                height: 125vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;">
+            <div style="text-align: center; padding-top: 5vh;">
+                <img src="data:image/png;base64,{encoded_title}" style="max-width: 100%; height: auto;" />
+                <br><br>
+                <form action="#" method="post">
+                    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 24px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer;">
+                        Get Started
+                    </button>
+                </form>
             </div>
         """, unsafe_allow_html=True)
 
-    with col2:
-        st.markdown(f"""
-            <div style="
-                background-image: url('data:image/png;base64,{encoded_title}');
-                background-size: cover;
-                background-position: center;
-                height: 125vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;">
-            </div>
-        """, unsafe_allow_html=True)
-        if st.button("Get Started"):
-            st.session_state.page = "Get Started"
-            st.rerun()
+        # Streamlit button alternative (if desired)
+        center_col = st.columns([4, 2, 4])[1]
+        with center_col:
+            st.markdown("""
+                <style>
+                .stButton>button {
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    padding: 10px 24px;
+                    font-size: 16px;
+                    border-radius: 5px;
+                }
+                </style>
+            """, unsafe_allow_html=True)
+            if st.button("Get Started"):
+                st.session_state.page = "Get Started"
+                st.rerun()
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
