@@ -21,6 +21,9 @@ with open("best.png", "rb") as img_file:
 with open("green_tree.png", "rb") as img_file:
     encoded_tree = base64.b64encode(img_file.read()).decode()
 
+with open("landingpage_title.png", "rb") as img_file:
+    encoded_title = base64.b64encode(img_file.read()).decode()
+
 def home():
     # Background image container with no padding
     col1, col2 = st.columns([5, 7])
@@ -30,7 +33,7 @@ def home():
                 background-image: url('data:image/png;base64,{encoded_tree}');
                 background-size: cover;
                 background-position: center;
-                height: 100vh;
+                height: 125vh;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -39,9 +42,18 @@ def home():
         """, unsafe_allow_html=True)
 
     with col2:
-        st.title("Benchmarking & Energy Savings Tool")
-        st.write("The Benchmarking and Energy Savings Tool (BEST) Cement is a process-based tool based on commercially available efficiency technologies used anywhere in the world applicable to the cement industry.")
-        st.write("")
+        st.markdown(f"""
+            <div style="
+                background-image: url('data:image/png;base64,{encoded_title}');
+                background-size: cover;
+                background-position: center;
+                height: 125vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;">
+            </div>
+        """, unsafe_allow_html=True)
         if st.button("Get Started"):
             st.session_state.page = "Get Started"
             st.rerun()
