@@ -26,21 +26,21 @@ with open("landingpage_title.png", "rb") as img_file:
 
 def home():
     # Background image container with no padding
-    st.markdown(f"""
-        <div style="
-            background-image: url('data:image/png;base64,{encoded}');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;">
-        </div>
-    """, unsafe_allow_html=True)
+    col1, col2 = st.columns([5, 7])
+    with col1:
+        st.markdown(f"""
+            <div style="
+                background-image: url('data:image/png;base64,{encoded_tree}');
+                background-size: cover;
+                background-position: center;
+                height: 125vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;">
+            </div>
+        """, unsafe_allow_html=True)
 
-    # Simulated overlay using centered column
-    col1, col2, col3 = st.columns([3, 1, 3])
     with col2:
         st.markdown(f"""
             <div style="text-align: center; padding-top: 5vh;">
