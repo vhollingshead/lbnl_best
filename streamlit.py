@@ -46,11 +46,6 @@ def home():
             <div style="text-align: center; padding-top: 5vh;">
                 <img src="data:image/png;base64,{encoded_title}" style="max-width: 100%; height: auto;" />
                 <br><br>
-                <form action="#" method="post">
-                    <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 24px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer;">
-                        Get Started
-                    </button>
-                </form>
             </div>
         """, unsafe_allow_html=True)
 
