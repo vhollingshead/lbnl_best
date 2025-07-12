@@ -23,24 +23,20 @@ with open("green_tree.png", "rb") as img_file:
 
 def home():
     # Background image container with no padding
-    # st.markdown(f"""
-    #     <div style="
-    #         background-image: url('data:image/png;base64,{encoded}');
-    #         background-size: cover;
-    #         background-position: center;
-    #         height: 100vh;
-    #         display: flex;
-    #         flex-direction: column;
-    #         justify-content: center;
-    #         align-items: center;">
-    #     </div>
-    # """, unsafe_allow_html=True)
-
-    # Simulated overlay using centered column
     col1, col2 = st.columns([5, 7])
-    # picture of the plant in col 1
     with col1:
-        st.image("green_tree.png", width=300)
+        st.markdown(f"""
+            <div style="
+                background-image: url('data:image/png;base64,{encoded_tree}');
+                background-size: cover;
+                background-position: center;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;">
+            </div>
+        """, unsafe_allow_html=True)
 
     with col2:
         st.title("Benchmarking & Energy Savings Tool")
