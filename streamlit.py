@@ -6,36 +6,46 @@ import pandas as pd
 st.set_page_config(layout="wide")
 
 # Set custom background color
-st.markdown("""
-    <style>
-    body, .main, .block-container, header, footer, .stSidebar {
-        background-color: #1d392b !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
+# st.markdown("""
+#     <style>
+#     body, .main, .block-container, header, footer, .stSidebar {
+#         background-color: #1d392b !important;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
 
 # Load and encode image
 with open("best.png", "rb") as img_file:
     encoded = base64.b64encode(img_file.read()).decode()
 
+with open("green_tree.png", "rb") as img_file:
+    encoded_tree = base64.b64encode(img_file.read()).decode()
+
 def home():
     # Background image container with no padding
-    st.markdown(f"""
-        <div style="
-            background-image: url('data:image/png;base64,{encoded}');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;">
-        </div>
-    """, unsafe_allow_html=True)
+    # st.markdown(f"""
+    #     <div style="
+    #         background-image: url('data:image/png;base64,{encoded}');
+    #         background-size: cover;
+    #         background-position: center;
+    #         height: 100vh;
+    #         display: flex;
+    #         flex-direction: column;
+    #         justify-content: center;
+    #         align-items: center;">
+    #     </div>
+    # """, unsafe_allow_html=True)
 
     # Simulated overlay using centered column
-    col1, col2, col3 = st.columns([3, 1, 3])
+    col1, col2 = st.columns([5, 7])
+    # picture of the plant in col 1
+    with col1:
+        st.image("green_tree.png", width=300)
+
     with col2:
+        st.title("Benchmarking & Energy Savings Tool")
+        st.write("The Benchmarking and Energy Savings Tool (BEST) Cement is a process-based tool based on commercially available efficiency technologies used anywhere in the world applicable to the cement industry.")
+        st.write("")
         if st.button("Get Started"):
             st.session_state.page = "Get Started"
             st.rerun()
