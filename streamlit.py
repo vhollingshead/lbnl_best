@@ -173,88 +173,88 @@ def energy_input_sheet():
     st.title("Energy Input Sheet title")
     st.subheader("Energy Inputs Table")
 
-    columns = [f"Step_{i+1}" for i in range(6)]
-    index = ["Electricity_Use", "Fuel_Use"]
-    default_data = [["" for _ in columns] for _ in index]
-    df = pd.DataFrame(default_data, index=index, columns=columns)
+    # columns = [f"Step_{i+1}" for i in range(6)]
+    # index = ["Electricity_Use", "Fuel_Use"]
+    # default_data = [["" for _ in columns] for _ in index]
+    # df = pd.DataFrame(default_data, index=index, columns=columns)
 
-    edited_df = st.data_editor(df, num_rows="fixed", use_container_width=True)
+    # edited_df = st.data_editor(df, num_rows="fixed", use_container_width=True)
 
-    # Save for later use
-    st.session_state.energy_inputs_df = edited_df
+    # # Save for later use
+    # st.session_state.energy_inputs_df = edited_df
 
-    # Upload CSV or XLSX file to populate table
-    st.subheader("Upload Energy Inputs from File")
-    uploaded_file = st.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx"])
+    # # Upload CSV or XLSX file to populate table
+    # st.subheader("Upload Energy Inputs from File")
+    # uploaded_file = st.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx"])
 
-    if uploaded_file:
-        try:
-            if uploaded_file.name.endswith(".csv"):
-                uploaded_df = pd.read_csv(uploaded_file, index_col=0)
-            else:
-                uploaded_df = pd.read_excel(uploaded_file, index_col=0)
+    # if uploaded_file:
+    #     try:
+    #         if uploaded_file.name.endswith(".csv"):
+    #             uploaded_df = pd.read_csv(uploaded_file, index_col=0)
+    #         else:
+    #             uploaded_df = pd.read_excel(uploaded_file, index_col=0)
 
-            # Display uploaded and overwrite table if structure matches
-            if list(uploaded_df.columns) == columns and list(uploaded_df.index) == index:
-                st.session_state.energy_inputs_df = uploaded_df
-                st.success("Uploaded data successfully loaded into the table.")
-            else:
-                st.error("Uploaded file structure does not match expected format.")
-        except Exception as e:
-            st.error(f"Error reading file: {e}")
+    #         # Display uploaded and overwrite table if structure matches
+    #         if list(uploaded_df.columns) == columns and list(uploaded_df.index) == index:
+    #             st.session_state.energy_inputs_df = uploaded_df
+    #             st.success("Uploaded data successfully loaded into the table.")
+    #         else:
+    #             st.error("Uploaded file structure does not match expected format.")
+    #     except Exception as e:
+    #         st.error(f"Error reading file: {e}")
 
-    # Generate Report button
-    if st.button("Generate Report"):
-        import matplotlib.pyplot as plt
-        from fpdf import FPDF
-        import tempfile
-        import os
+    # # Generate Report button
+    # if st.button("Generate Report"):
+    #     import matplotlib.pyplot as plt
+    #     from fpdf import FPDF
+    #     import tempfile
+    #     import os
 
-        # Create plots for graphs and save as PNGs
-        def save_graph_as_png(fig, filename):
-            with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile:
-                fig.savefig(tmpfile.name, bbox_inches='tight')
-                tmpfile.close()
-                os.rename(tmpfile.name, filename)
+    #     # Create plots for graphs and save as PNGs
+    #     def save_graph_as_png(fig, filename):
+    #         with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as tmpfile:
+    #             fig.savefig(tmpfile.name, bbox_inches='tight')
+    #             tmpfile.close()
+    #             os.rename(tmpfile.name, filename)
 
-        raw_df = st.session_state.get("raw_materials_df", {})
-        material_keys = ["Limestone", "Clay", "Iron Ore", "Fly Ash"]
-        other_keys = [k for k in raw_df.keys() if k.startswith("Other")]
-        total = sum([raw_df.get(k, 0) for k in material_keys + other_keys if isinstance(raw_df.get(k, 0), (int, float))])
-        slice_value = total * 0.25
+    #     raw_df = st.session_state.get("raw_materials_df", {})
+    #     material_keys = ["Limestone", "Clay", "Iron Ore", "Fly Ash"]
+    #     other_keys = [k for k in raw_df.keys() if k.startswith("Other")]
+    #     total = sum([raw_df.get(k, 0) for k in material_keys + other_keys if isinstance(raw_df.get(k, 0), (int, float))])
+    #     slice_value = total * 0.25
 
-        fig1, ax1 = plt.subplots()
-        ax1.pie([slice_value, total - slice_value], labels=["25% Slice", "Remaining 75%"], autopct='%1.1f%%')
-        ax1.set_title("Graph 1: 25% of Total Raw Materials")
-        save_graph_as_png(fig1, "graph1.png")
+    #     fig1, ax1 = plt.subplots()
+    #     ax1.pie([slice_value, total - slice_value], labels=["25% Slice", "Remaining 75%"], autopct='%1.1f%%')
+    #     ax1.set_title("Graph 1: 25% of Total Raw Materials")
+    #     save_graph_as_png(fig1, "graph1.png")
 
-        data = {k: raw_df[k] for k in material_keys + other_keys if isinstance(raw_df.get(k), (int, float))}
-        fig2, ax2 = plt.subplots()
-        ax2.bar(data.keys(), data.values())
-        ax2.set_title("Graph 2: Raw Material Usage")
-        plt.xticks(rotation=45)
-        save_graph_as_png(fig2, "graph2.png")
+    #     data = {k: raw_df[k] for k in material_keys + other_keys if isinstance(raw_df.get(k), (int, float))}
+    #     fig2, ax2 = plt.subplots()
+    #     ax2.bar(data.keys(), data.values())
+    #     ax2.set_title("Graph 2: Raw Material Usage")
+    #     plt.xticks(rotation=45)
+    #     save_graph_as_png(fig2, "graph2.png")
 
-        fig3, ax3 = plt.subplots()
-        ax3.pie([0.8, 0.2], labels=["80% Slice", "Remaining 20%"], autopct='%1.1f%%')
-        ax3.set_title("Graph 3: Placeholder Slice")
-        save_graph_as_png(fig3, "graph3.png")
+    #     fig3, ax3 = plt.subplots()
+    #     ax3.pie([0.8, 0.2], labels=["80% Slice", "Remaining 20%"], autopct='%1.1f%%')
+    #     ax3.set_title("Graph 3: Placeholder Slice")
+    #     save_graph_as_png(fig3, "graph3.png")
 
-        # Create PDF
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font("Arial", size=12)
+    #     # Create PDF
+    #     pdf = FPDF()
+    #     pdf.add_page()
+    #     pdf.set_font("Arial", size=12)
 
-        for i in range(1, 4):
-            pdf.cell(200, 10, txt=f"Graph {i}", ln=True, align='C')
-            pdf.image(f"graph{i}.png", x=10, w=180)
-            pdf.multi_cell(0, 10, txt="This summary sheet gives detailed information about the benchmark cement plant (both international and domestic). If the detailed assessment was performed, reference facility and actual facility data is given for each process step for comparison. If the quick assessment was carried out, data is only given for each process step for the reference facility; and total energy (for the entire facility) is given for both the reference and actual facilities. Both international and domestic best practice values, technologies, and references for those values and technologies are provided on this sheet for each process step. The user may continue on to the next page by pressing the next button.  Pressing the references button will show all references used to create the benchmark as well as those used for the efficiency measures. .")
+    #     for i in range(1, 4):
+    #         pdf.cell(200, 10, txt=f"Graph {i}", ln=True, align='C')
+    #         pdf.image(f"graph{i}.png", x=10, w=180)
+    #         pdf.multi_cell(0, 10, txt="This summary sheet gives detailed information about the benchmark cement plant (both international and domestic). If the detailed assessment was performed, reference facility and actual facility data is given for each process step for comparison. If the quick assessment was carried out, data is only given for each process step for the reference facility; and total energy (for the entire facility) is given for both the reference and actual facilities. Both international and domestic best practice values, technologies, and references for those values and technologies are provided on this sheet for each process step. The user may continue on to the next page by pressing the next button.  Pressing the references button will show all references used to create the benchmark as well as those used for the efficiency measures. .")
 
-        pdf_output = os.path.join(tempfile.gettempdir(), "report.pdf")
-        pdf.output(pdf_output)
+    #     pdf_output = os.path.join(tempfile.gettempdir(), "report.pdf")
+    #     pdf.output(pdf_output)
 
-        with open(pdf_output, "rb") as f:
-            st.download_button("Download Report PDF", f, file_name="energy_report.pdf")
+    #     with open(pdf_output, "rb") as f:
+    #         st.download_button("Download Report PDF", f, file_name="energy_report.pdf")
 
 
 # Initial state
