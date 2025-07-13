@@ -351,21 +351,22 @@ def home():
     # Right text content
     with right:
         st.markdown("""
-            <style>
-            @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap');
-            h1, p {
-                color: white;
-                font-family: 'Libre Franklin', sans-serif;
-            }
-            </style>
-            <p style='font-size: 3.2em;'>
-                Benchmarking<br>& Energy<br>Savings Tool
-            </p>
-            <p style='font-size: 1.2em;'>
-                The Benchmarking and Energy Savings Tool (BEST) Cement is a process-based tool based on commercially available<br>
-                efficiency technologies used anywhere in the world applicable to the cement industry.
-            </p>
-        """, unsafe_allow_html=True)
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+        
+        h1, p {
+            color: white;
+            font-family: 'Outfit', sans-serif;
+        }
+        </style>
+        <h1 style='font-size: 3.8em; line-height: 1.2; font-weight: 700;'>
+            Benchmarking<br>and Energy<br>Savings Tool
+        </h1>
+        <p style='font-size: 1.2em; max-width: 500px;'>
+            The Benchmarking and Energy Savings Tool (BEST) Cement is a process-based tool based on commercially available<br>
+            efficiency technologies used anywhere in the world applicable to the cement industry.
+        </p>
+    """, unsafe_allow_html=True)
 
         center_col = st.columns([3, 1, 3])[1]
         with center_col:
