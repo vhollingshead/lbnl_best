@@ -359,9 +359,9 @@ def home():
             font-family: 'Outfit', sans-serif;
         }
         </style>
-        <h1 style='font-size: 3.8em; line-height: 1.2; font-weight: 700;'>
+        <p style='font-size: 3.8em; line-height: 1.2; font-weight: 700;'>
             Benchmarking<br>and Energy<br>Savings Tool
-        </h1>
+        </p>
         <p style='font-size: 1.2em; max-width: 500px;'>
             The Benchmarking and Energy Savings Tool (BEST) Cement is a process-based tool based on commercially available<br>
             efficiency technologies used anywhere in the world applicable to the cement industry.
