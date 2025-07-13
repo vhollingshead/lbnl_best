@@ -368,7 +368,7 @@ def home():
         </p>
     """, unsafe_allow_html=True)
 
-        center_col = st.columns([3, 1, 3])[1]
+        center_col = st.columns([1, 1, 1])[1]
         with center_col:
             st.markdown("""
                 <style>
