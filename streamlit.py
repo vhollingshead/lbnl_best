@@ -341,10 +341,6 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Load and encode image
-with open("best_left.png", "rb") as img_file:
-    encoded_left = base64.b64encode(img_file.read()).decode()
-
 def home():
     left, right = st.columns([1, 1])
 
