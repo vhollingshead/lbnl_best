@@ -346,7 +346,12 @@ def home():
 
     # Left image
     with left:
-        st.image("best_left.png", use_container_width=True)
+        # st.image("best_left.png", use_container_width=True)
+        st.markdown("""
+        <div style='height: 600px; background-color: #244534; display: flex; justify-content: center; align-items: center;'>
+            <p style='color: white; font-family: Libre Franklin;'>Left Column Content</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     # Right text content
     with right:
