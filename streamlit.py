@@ -324,10 +324,7 @@
 # elif st.session_state.page == "Home":
 #     home()
 
-
-
-
-## 
+#### Two Image Background - Green ###
 
 import streamlit as st
 from PIL import Image
@@ -345,30 +342,45 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Load and encode image
-with open("best.png", "rb") as img_file:
-    encoded = base64.b64encode(img_file.read()).decode()
+with open("best_left.png", "rb") as img_file:
+    encoded_left = base64.b64encode(img_file.read()).decode()
 
 def home():
-    # Background image container with no padding
-    st.markdown(f"""
-        <div style="
-            background-image: url('data:image/png;base64,{encoded}');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;">
-        </div>
-    """, unsafe_allow_html=True)
+    left, right = st.columns([1, 1])
 
-    # Simulated overlay using centered column
-    col1, col2, col3 = st.columns([3, 1, 3])
-    with col2:
-        if st.button("Get Started"):
-            st.session_state.page = "Get Started"
-            st.rerun()
+    # Left image
+    with left:
+        st.image("best_left.png", use_column_width=True)
+
+    # Right text content
+    with right:
+        st.markdown("""
+            <h1 style='font-size: 3.5em; color: #103b20;'>
+                Benchmarking<br>& Energy<br>Savings Tool
+            </h1>
+            <p style='font-size: 1.2em; color: #1d392b;'>
+                The Benchmarking and Energy Savings Tool (BEST) Cement is a process-based tool based on commercially available<br>
+                efficiency technologies used anywhere in the world applicable to the cement industry.
+            </p>
+        """, unsafe_allow_html=True)
+
+        center_col = st.columns([3, 1, 3])[1]
+        with center_col:
+            st.markdown("""
+                <style>
+                .stButton>button {
+                    background-color: #4CAF50;
+                    color: white;
+                    padding: 10px 24px;
+                    font-size: 16px;
+                    border: none;
+                    border-radius: 5px;
+                }
+                </style>
+            """, unsafe_allow_html=True)
+            if st.button("Get Started"):
+                st.session_state.page = "Get Started"
+                st.rerun()
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
@@ -428,3 +440,108 @@ if st.session_state.page == "Get Started":
     get_started()
 elif st.session_state.page == "Home":
     home()
+
+
+
+
+# #### One Image Background - Green ###
+
+# import streamlit as st
+# from PIL import Image
+# import base64
+
+# st.set_page_config(layout="wide")
+
+# # Set custom background color
+# st.markdown("""
+#     <style>
+#     body, .main, .block-container, header, footer, .stSidebar {
+#         background-color: #1d392b !important;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
+
+# # Load and encode image
+# with open("best.png", "rb") as img_file:
+#     encoded = base64.b64encode(img_file.read()).decode()
+
+# def home():
+#     # Background image container with no padding
+#     st.markdown(f"""
+#         <div style="
+#             background-image: url('data:image/png;base64,{encoded}');
+#             background-size: cover;
+#             background-position: center;
+#             height: 100vh;
+#             display: flex;
+#             flex-direction: column;
+#             justify-content: center;
+#             align-items: center;">
+#         </div>
+#     """, unsafe_allow_html=True)
+
+#     # Simulated overlay using centered column
+#     col1, col2, col3 = st.columns([3, 1, 3])
+#     with col2:
+#         if st.button("Get Started"):
+#             st.session_state.page = "Get Started"
+#             st.rerun()
+
+# def get_started():
+#     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
+#     st.subheader("Raw materials")
+#     st.write("1. Amount of limestone used. Enter annual amount of limestone in tonnes of material.")
+#     st.write("2. Quantity of additives used. For each additive, enter annual amount in tonnes. If additives other than those listed are used, enter the additive type in the “other 1” or “other 2” box and its amount.")
+#     st.write("3. Enter the amount of materials that are preblended, crushed, dried and ground. User may use default values (where provided) or may enter his/her own data if available.")
+
+#     # Input fields
+#     limestone = st.number_input("Limestone used (tonnes)", min_value=0.0, step=100.0, format="%e")
+#     clay = st.number_input("Clay used (tonnes)", min_value=0.0, step=10.0, format="%e")
+#     default_iron_ore = 9.0
+#     iron_ore = st.number_input("Iron Ore used (tonnes)", min_value=0.0, step=10.0, format="%e", value=default_iron_ore, key="iron_ore")
+#     st.markdown("""
+#         <style>
+#         div[data-testid="stNumberInput"]:has(input[aria-label='Iron Ore used (tonnes)']) input {
+#             background-color: #d5f7dc !important;
+#         }
+#         </style>
+#     """, unsafe_allow_html=True)
+    
+#     default_fly_ash = 9.0
+#     fly_ash = st.number_input("Fly Ash used (tonnes)", min_value=0.0, step=10.0, format="%e", value=default_fly_ash, key="fly_ash")
+#     st.markdown("""
+#         <style>
+#         div[data-testid="stNumberInput"]:has(input[aria-label='Fly Ash used (tonnes)']) input {
+#             background-color: #d5f7dc !important;
+#         }
+#         </style>
+#     """, unsafe_allow_html=True)
+    
+#     other1_type = st.text_input("Other 1 - Additive Type")
+#     other1_amount = st.number_input("Other 1 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
+#     other2_type = st.text_input("Other 2 - Additive Type")
+#     other2_amount = st.number_input("Other 2 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
+
+#     # Store inputs in temporary DataFrame
+#     st.session_state.raw_materials_df = {
+#         "Limestone": limestone,
+#         "Clay": clay,
+#         "Iron Ore": iron_ore,
+#         "Fly Ash": fly_ash,
+#         f"Other 1 - {other1_type}": other1_amount,
+#         f"Other 2 - {other2_type}": other2_amount
+#     }
+
+#     # Display preview
+#     st.subheader("Preview of Entered Data")
+#     st.write(st.session_state.raw_materials_df)
+
+# # Initial state
+# if "page" not in st.session_state:
+#     st.session_state.page = "Home"
+
+# # Page routing
+# if st.session_state.page == "Get Started":
+#     get_started()
+# elif st.session_state.page == "Home":
+#     home()
