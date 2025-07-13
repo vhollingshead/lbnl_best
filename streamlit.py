@@ -342,11 +342,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def home():
-    left, right = st.columns([1, 1])
+    left, right = st.columns([5, 7])
 
     # Left image
     with left:
-        st.image("best_left.png", use_column_width=True)
+        st.image("best_left.png", use_container_width=True)
 
     # Right text content
     with right:
