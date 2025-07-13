@@ -351,10 +351,17 @@ def home():
     # Right text content
     with right:
         st.markdown("""
-            <h1 style='font-size: 3.5em; color: #103b20;'>
+            <style>
+            @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;700&display=swap');
+            h1, p {
+                color: white;
+                font-family: 'Libre Franklin', sans-serif;
+            }
+            </style>
+            <h1 style='font-size: 3.5em;'>
                 Benchmarking<br>& Energy<br>Savings Tool
             </h1>
-            <p style='font-size: 1.2em; color: #1d392b;'>
+            <p style='font-size: 1.2em;'>
                 The Benchmarking and Energy Savings Tool (BEST) Cement is a process-based tool based on commercially available<br>
                 efficiency technologies used anywhere in the world applicable to the cement industry.
             </p>
