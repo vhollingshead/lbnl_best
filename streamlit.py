@@ -359,32 +359,35 @@ def home():
         top_height = int(container_height * 0.75)
         bottom_height = container_height - top_height
 
-        st.markdown(f"""
-            <div style='height: {top_height}px; background-color: #f0f0f0;'>
-                <h3 style='text-align:center;'>Top Container (75%)</h3>
-            </div>
-            <div style='height: {bottom_height}px; background-color: #d0d0d0;'>
-                <h3 style='text-align:center;'>Bottom Container (25%)</h3>
-            </div>
-        """, unsafe_allow_html=True)
-
-        center_col = st.columns([1, 1, 1])[1]
-        with center_col:
-            st.markdown("""
-                <style>
-                .stButton>button {
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 10px 24px;
-                    font-size: 16px;
-                    border: none;
-                    border-radius: 5px;
-                }
-                </style>
+        with st.container():
+            st.markdown(f"""
+                <div style='height: {top_height}px; background-color: #f0f0f0;'>
+                    <h3 style='text-align:center;'>Top Container (75%)</h3>
+                </div>
             """, unsafe_allow_html=True)
-            if st.button("Get Started"):
-                st.session_state.page = "Get Started"
-                st.rerun()
+
+        with st.container():
+            center_col = st.columns([1, 1, 1])[1]
+            with center_col:
+                st.markdown(f"""
+                    <div style='height: {bottom_height}px; background-color: #d0d0d0; display: flex; justify-content: center; align-items: center;'>
+                        <style>
+                        .stButton>button {{
+                            background-color: #4CAF50;
+                            color: white;
+                            padding: 10px 24px;
+                            font-size: 16px;
+                            border: none;
+                            border-radius: 5px;
+                        }}
+                        </style>
+                """, unsafe_allow_html=True)
+
+                if st.button("Get Started"):
+                    st.session_state.page = "Get Started"
+                    st.rerun()
+
+                st.markdown("</div>", unsafe_allow_html=True)
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
