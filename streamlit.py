@@ -416,7 +416,6 @@ def home():
                 st.session_state.report_title = title
                 st.session_state.assessment_type = assessment_type
                 st.session_state.page = "Get Started"
-                st.experimental_rerun()
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
