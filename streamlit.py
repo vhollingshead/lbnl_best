@@ -366,11 +366,11 @@ def home():
                 </div>
             """, unsafe_allow_html=True)
 
-            col1, col2, col3 = st.columns([1, 1, 1])
+            col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
-                if st.button("Get Started"):
-                    st.session_state.page = "Get Started"
-                    st.rerun()
+                st.markdown("<br><br><br>", unsafe_allow_html=True)  # approximate vertical spacing
+                if st.button("Get Started", use_container_width=True):
+                    st.success("Started!")
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
