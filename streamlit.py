@@ -367,25 +367,11 @@ def home():
             """, unsafe_allow_html=True)
 
         with st.container():
-            st.markdown(f"""
-            <div style='height: {bottom_height}px; background-color: #d0d0d0; display: flex; justify-content: center; align-items: center;'>
-                <style>
-                .stButton>button {{
-                    background-color: #4CAF50;
-                    color: white;
-                    padding: 10px 24px;
-                    font-size: 16px;
-                    border: none;
-                    border-radius: 5px;
-                }}
-                </style>
-            """, unsafe_allow_html=True)
-
-            if st.button("Get Started"):
-                st.session_state.page = "Get Started"
-                st.rerun()
-
-            st.markdown("</div>", unsafe_allow_html=True)
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                if st.button("Get Started"):
+                    st.session_state.page = "Get Started"
+                    st.rerun()
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
