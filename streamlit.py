@@ -329,48 +329,50 @@
 import streamlit as st
 from PIL import Image
 import base64
-
+from datetime import date
 st.set_page_config(layout="wide")
 
-# Set custom background color
-st.markdown("""
-    <style>
-    body, .main, .block-container, header, footer, .stSidebar {
-        background-color: #1d392b !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
+# # Set custom background color
+# st.markdown("""
+#     <style>
+#     body, .main, .block-container, header, footer, .stSidebar {
+#         background-color: #1d392b !important;
+#     }
+#     </style>
+# """, unsafe_allow_html=True)
 
 def home():
-    left, right = st.columns([5, 7])
+    # ---- UP Container ----
+    with st.container():
+        st.image("cement_left_best.png", use_column_width=True)  
 
-    # Left image
-    with left:
-        st.image("best_left.png", use_container_width=True)
-        # st.markdown("""
-        # <div style='height: 600px; background-color: #244534; display: flex; justify-content: center; align-items: center;'>
-        #     <p style='color: white; font-family: Libre Franklin;'>Left Column Content</p>
-        # </div>
-        # """, unsafe_allow_html=True)
+    # ---- DOWN Container ----
+    with st.container():
+        left_col, right_col = st.columns(2)
 
-    # Right text content
-    with right:
-        container_height = 600
-        top_height = int(container_height * 0.85)
-        bottom_height = container_height - top_height
-
-        with st.container():
-            st.markdown(f"""
-                <div style='height: {top_height}px; background-color: #f0f0f0;'>
-                    <h3 style='text-align:center;'>Top Container (75%)</h3>
+        with left_col:
+            st.markdown(
+                """
+                <div style="background-color: #f0f0f0; padding: 2em; border-radius: 8px;">
+                    <p style="color: #666;">Insert text here</p>
                 </div>
-            """, unsafe_allow_html=True)
+                """,
+                unsafe_allow_html=True
+            )
 
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                # st.markdown("", unsafe_allow_html=True)  # approximate vertical spacing
-                if st.button("Get Started", use_container_width=True):
-                    st.success("Started!")
+        # Right Column - Form
+        with right_col:
+            with st.form(key="report_form"):
+                title = st.text_input("Report Title")
+                today = st.date_input("Date", value=date.today(), disabled=True)
+                assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
+                submitted = st.form_submit_button("Submit")
+
+            if submitted:
+                st.session_state.report_title = title
+                st.session_state.assessment_type = assessment_type
+                st.session_state.page = "Get Started"  # Used for navigation below
+                st.experimental_rerun()
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
