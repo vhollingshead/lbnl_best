@@ -341,6 +341,15 @@ st.set_page_config(layout="wide")
         #     </style>
         # """, unsafe_allow_html=True)
 
+# Removes auto hint on form fields
+st.markdown("""
+    <style>
+    .stTextInput > div > div > input:focus + div {
+        display: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -373,7 +382,7 @@ def home():
 
     # ---- DOWN Container ----
     with st.container():
-        left_col, right_col = st.columns([1.4, .6])
+        left_col, right_col = st.columns([1.3, .7])
 
         with left_col:
             # st.write("")
