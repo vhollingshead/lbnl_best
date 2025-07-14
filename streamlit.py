@@ -340,14 +340,28 @@ def home():
     # ---- UP Container ----
     with st.container():
         # Set custom background color
-        st.markdown("""
-            <style>
-            body, .main, .block-container, header, footer, .stSidebar {
-                background-color: #1d392b !important;
-            }
-            </style>
-        """, unsafe_allow_html=True)
-        
+        # st.markdown("""
+        #     <style>
+        #     body, .main, .block-container, header, footer, .stSidebar {
+        #         background-color: #1d392b !important;
+        #     }
+        #     </style>
+        # """, unsafe_allow_html=True)
+
+        st.markdown(
+        """
+        <style>
+        .top-container {
+            background-color: #1d392b;
+            padding: 2em;
+            border-radius: 8px;
+        }
+        </style>
+        <div class="top-container">
+        """,
+        unsafe_allow_html=True
+    )
+
         st.markdown(f"""
             <div style="
                 background-image: url('data:image/png;base64,{encoded_best_high}');
