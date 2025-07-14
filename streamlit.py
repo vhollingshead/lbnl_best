@@ -433,53 +433,44 @@ def home():
                 st.session_state.page = "Get Started"
 
 def get_started():
-    st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
-    st.subheader("Raw materials")
-    st.write("1. Amount of limestone used. Enter annual amount of limestone in tonnes of material.")
-    st.write("2. Quantity of additives used. For each additive, enter annual amount in tonnes. If additives other than those listed are used, enter the additive type in the “other 1” or “other 2” box and its amount.")
-    st.write("3. Enter the amount of materials that are preblended, crushed, dried and ground. User may use default values (where provided) or may enter his/her own data if available.")
+    with st.form("raw_materials_form"):
+        st.markdown("### Enter Raw Material Inputs")
 
-    # Input fields
-    limestone = st.number_input("Limestone used (tonnes)", min_value=0.0, step=100.0, format="%e")
-    clay = st.number_input("Clay used (tonnes)", min_value=0.0, step=10.0, format="%e")
-    default_iron_ore = 9.0
-    iron_ore = st.number_input("Iron Ore used (tonnes)", min_value=0.0, step=10.0, format="%e", value=default_iron_ore, key="iron_ore")
-    st.markdown("""
-        <style>
-        div[data-testid="stNumberInput"]:has(input[aria-label='Iron Ore used (tonnes)']) input {
-            background-color: #d5f7dc !important;
+        # Input fields
+        limestone = st.number_input("Limestone used (tonnes)", min_value=0.0, step=100.0, format="%e")
+        clay = st.number_input("Clay used (tonnes)", min_value=0.0, step=10.0, format="%e")
+
+        default_iron_ore = 9.0
+        iron_ore = st.number_input("Iron Ore used (tonnes)", min_value=0.0, step=10.0, format="%e",
+                                value=default_iron_ore, key="iron_ore")
+
+        default_fly_ash = 9.0
+        fly_ash = st.number_input("Fly Ash used (tonnes)", min_value=0.0, step=10.0, format="%e",
+                                value=default_fly_ash, key="fly_ash")
+
+        other1_type = st.text_input("Other 1 - Additive Type")
+        other1_amount = st.number_input("Other 1 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
+        other2_type = st.text_input("Other 2 - Additive Type")
+        other2_amount = st.number_input("Other 2 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
+
+        # Submit button
+        submitted = st.form_submit_button("Submit Raw Material Data")
+
+    if submitted:
+        # Store inputs in session state
+        st.session_state.raw_materials_df = {
+            "Limestone": limestone,
+            "Clay": clay,
+            "Iron Ore": iron_ore,
+            "Fly Ash": fly_ash,
+            f"Other 1 - {other1_type}": other1_amount,
+            f"Other 2 - {other2_type}": other2_amount
         }
-        </style>
-    """, unsafe_allow_html=True)
-    
-    default_fly_ash = 9.0
-    fly_ash = st.number_input("Fly Ash used (tonnes)", min_value=0.0, step=10.0, format="%e", value=default_fly_ash, key="fly_ash")
-    st.markdown("""
-        <style>
-        div[data-testid="stNumberInput"]:has(input[aria-label='Fly Ash used (tonnes)']) input {
-            background-color: #d5f7dc !important;
-        }
-        </style>
-    """, unsafe_allow_html=True)
-    
-    other1_type = st.text_input("Other 1 - Additive Type")
-    other1_amount = st.number_input("Other 1 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
-    other2_type = st.text_input("Other 2 - Additive Type")
-    other2_amount = st.number_input("Other 2 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
 
-    # Store inputs in temporary DataFrame
-    st.session_state.raw_materials_df = {
-        "Limestone": limestone,
-        "Clay": clay,
-        "Iron Ore": iron_ore,
-        "Fly Ash": fly_ash,
-        f"Other 1 - {other1_type}": other1_amount,
-        f"Other 2 - {other2_type}": other2_amount
-    }
+        # Display preview
+        st.subheader("Preview of Entered Data")
+        st.write(st.session_state.raw_materials_df)
 
-    # Display preview
-    st.subheader("Preview of Entered Data")
-    st.write(st.session_state.raw_materials_df)
 
 
 ##### Page Routing #####
