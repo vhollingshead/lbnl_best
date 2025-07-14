@@ -374,7 +374,7 @@ def home():
                 """
                 <br>
                 <div style="background-color: #f0f0f0; padding: 2em; border-radius: 8px;">
-                    <p style="color: #666;"><center><b>Your Business Data Remains Private</b></center>
+                    <p style="color: #666;"><t sytle="size: 1.2em;"><center><b>Your Business Data Remains Private</b></center></t>
                     <br>
                     We understand that business data can be sensitive and proprietary. This tool is designed with your confidentiality in mind. All processing happens locally in your browser — <b> no data is collected or stored on our servers.</b>
                     <br>
@@ -395,12 +395,12 @@ def home():
                 title = st.text_input("Report Title")
                 today = st.date_input("Date", value=date.today(), disabled=True)
                 assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
-                submitted = st.form_submit_button("Submit")
+                submitted = st.form_submit_button("Get Started")
 
             if submitted:
                 st.session_state.report_title = title
                 st.session_state.assessment_type = assessment_type
-                st.session_state.page = "Get Started"  # Used for navigation below
+                st.session_state.page = "Get Started"  
                 st.experimental_rerun()
 
 def get_started():
