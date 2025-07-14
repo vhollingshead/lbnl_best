@@ -370,117 +370,54 @@ def home():
             align-items: center;">
         </div>
     """, unsafe_allow_html=True)
-        
+
     # ---- DOWN Container ----
     with st.container():
-        left_col, right_col = st.columns([1.3, 0.7])
+        left_col, right_col = st.columns([1.3, .7])
 
-        shared_box_style = """
-            <style>
-            .custom-box {
-                background-color: #f0f0f0;
-                padding: 2em;
-                border-radius: 6px;
-                height: 100%;
-                font-family: 'Segoe UI', sans-serif;
-                color: #333;
-                font-size: 1em;
-            }
-            </style>
-        """
-        st.markdown(shared_box_style, unsafe_allow_html=True)
-
-        # Left Column – Privacy Notice
         with left_col:
+            st.write("")
+            
             st.markdown(
                 """
-                <div class="custom-box">
-                    <p><span style="font-size: 1.5em;"><b>Your Privacy is Important to Us</b></span></p>
-                    <p>
-                    We understand that business data can be sensitive and proprietary. This tool is designed with your confidentiality in mind.
-                    All processing happens locally in your browser — <b>no data is collected or stored on our servers.</b>
-                    </p>
-                    <p>
-                    For this reason, all data must be entered in <b>one sitting</b>. Once you close or refresh the page, your inputs will be cleared
-                    to ensure your information is never retained.
-                    </p>
-                    <p>
-                    You can use the tool with full confidence that your <b>inputs stay secure and entirely under your control.</b> We do not track,
-                    share, or retain any information you enter.
+                <br>
+                <div style="background-color: #f0f0f0; padding: 2em; border-radius: 5.5px;">
+                    <p style="color: #666;"><span style="font-size: 1.5em;"><b>Your Privacy is Important to Us</b></span><br>
+                    <br>
+                    We understand that business data can be sensitive and proprietary. This tool is designed with your confidentiality in mind. All processing happens locally in your browser — <b> no data is collected or stored on our servers.</b>
+                    <br>
+                    <br>
+                    For this reason, all data must be entered in <b>one sitting</b>. Once you close or refresh the page, your inputs will be cleared to ensure your information is never retained.
+                    <br>
+                    <br>
+                    You can use the tool with full confidence that your <b> inputs stay secure and entirely under your control. </b> We do not track, share, or retain any information you enter.
                     </p>
                 </div>
                 """,
                 unsafe_allow_html=True
             )
 
-        # Right Column – Form
+        # Right Column - Form
         with right_col:
-            st.markdown('<div class="custom-box">', unsafe_allow_html=True)
-
+            st.write("")
+            st.write("")
+            st.write("")
+            
             with st.form(key="report_form"):
-                st.markdown("#### Get Started")
-                title = st.text_input("BEST Report Title")
+                st.markdown("#### Begin BEST Assessment")
+                title = st.text_input("BEST Assessment Title")
                 today = st.date_input("Date", value=date.today(), disabled=True)
                 assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
                 st.write("")
-                _, center, _ = st.columns([1, 2, 1])
+                left, center, right = st.columns([1, 1, 1])
                 with center:
                     submitted = st.form_submit_button("Get Started")
 
-            st.markdown('</div>', unsafe_allow_html=True)
 
             if submitted:
                 st.session_state.report_title = title
                 st.session_state.assessment_type = assessment_type
                 st.session_state.page = "Get Started"
-
-
-    # # ---- DOWN Container ----
-    # with st.container():
-    #     left_col, right_col = st.columns([1.3, .7])
-
-    #     with left_col:
-    #         st.write("")
-            
-    #         st.markdown(
-    #             """
-    #             <br>
-    #             <div style="background-color: #f0f0f0; padding: 2em; border-radius: 5.5px;">
-    #                 <p style="color: #666;"><span style="font-size: 1.5em;"><b>Your Privacy is Important to Us</b></span><br>
-    #                 <br>
-    #                 We understand that business data can be sensitive and proprietary. This tool is designed with your confidentiality in mind. All processing happens locally in your browser — <b> no data is collected or stored on our servers.</b>
-    #                 <br>
-    #                 <br>
-    #                 For this reason, all data must be entered in <b>one sitting</b>. Once you close or refresh the page, your inputs will be cleared to ensure your information is never retained.
-    #                 <br>
-    #                 <br>
-    #                 You can use the tool with full confidence that your <b> inputs stay secure and entirely under your control. </b> We do not track, share, or retain any information you enter.
-    #                 </p>
-    #             </div>
-    #             """,
-    #             unsafe_allow_html=True
-    #         )
-
-    #     # Right Column - Form
-    #     with right_col:
-    #         st.write("")
-    #         st.write("")
-    #         st.write("")
-            
-    #         with st.form(key="report_form"):
-    #             title = st.text_input("BEST Report Title")
-    #             today = st.date_input("Date", value=date.today(), disabled=True)
-    #             assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
-    #             st.write("")
-    #             left, center, right = st.columns([1, 1, 1])
-    #             with center:
-    #                 submitted = st.form_submit_button("Get Started")
-
-
-    #         if submitted:
-    #             st.session_state.report_title = title
-    #             st.session_state.assessment_type = assessment_type
-    #             st.session_state.page = "Get Started"
 
 def get_started():
     st.title("Production Input Sheet 1 - Raw Materials and Clinker Production")
