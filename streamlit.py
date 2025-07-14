@@ -401,6 +401,7 @@ def home():
         with right_col:
 
             st.write("")
+            st.write("Let's get started!")
             st.write("")
             st.write("")
             
