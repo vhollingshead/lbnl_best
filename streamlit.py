@@ -356,7 +356,7 @@ def home():
     # Right text content
     with right:
         container_height = 600
-        top_height = int(container_height * 0.75)
+        top_height = int(container_height * 0.85)
         bottom_height = container_height - top_height
 
         with st.container():
@@ -365,7 +365,7 @@ def home():
                     <h3 style='text-align:center;'>Top Container (75%)</h3>
                 </div>
             """, unsafe_allow_html=True)
-            
+
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
                 if st.button("Get Started"):
