@@ -376,7 +376,7 @@ def home():
         left_col, right_col = st.columns([1.3, .7])
 
         with left_col:
-            st.write("")
+            # st.write("")
             
             st.markdown(
                 """
