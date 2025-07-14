@@ -373,7 +373,7 @@ def home():
 
     # ---- DOWN Container ----
     with st.container():
-        left_col, right_col = st.columns([1.3, .7])
+        left_col, right_col = st.columns([1.4, .6])
 
         with left_col:
             # st.write("")
