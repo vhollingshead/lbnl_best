@@ -332,19 +332,19 @@ import base64
 from datetime import date
 st.set_page_config(layout="wide")
 
-# # Set custom background color
-# st.markdown("""
-#     <style>
-#     body, .main, .block-container, header, footer, .stSidebar {
-#         background-color: #1d392b !important;
-#     }
-#     </style>
-# """, unsafe_allow_html=True)
+# Set custom background color
+st.markdown("""
+    <style>
+    body, .main, .block-container, header, footer, .stSidebar {
+        background-color: #1d392b !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 def home():
     # ---- UP Container ----
     with st.container():
-        st.image("cement_left_best_high.png", use_container_width=True)  
+        st.image("best_all_green.png", use_container_width=True)  
 
     # ---- DOWN Container ----
     with st.container():
