@@ -368,7 +368,7 @@ def home():
 
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
-                st.markdown("<br><br><br>", unsafe_allow_html=True)  # approximate vertical spacing
+                st.markdown("<br><br>", unsafe_allow_html=True)  # approximate vertical spacing
                 if st.button("Get Started", use_container_width=True):
                     st.success("Started!")
 
