@@ -399,6 +399,8 @@ def home():
 
         # Right Column - Form
         with right_col:
+
+            st.write("")
             
             with st.form(key="report_form"):
                 title = st.text_input("Report Title")
