@@ -381,7 +381,7 @@ def home():
             st.markdown(
                 """
                 <br>
-                <div style="background-color: #f0f0f0; padding: 2em; border-radius: 6px;">
+                <div style="background-color: #f0f0f0; padding: 2em; border-radius: 5.5px;">
                     <p style="color: #666;"><span style="font-size: 1.5em;"><b>Your Privacy is Important to Us</b></span><br>
                     <br>
                     We understand that business data can be sensitive and proprietary. This tool is designed with your confidentiality in mind. All processing happens locally in your browser — <b> no data is collected or stored on our servers.</b>
