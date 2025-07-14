@@ -365,8 +365,7 @@ def home():
                     <h3 style='text-align:center;'>Top Container (75%)</h3>
                 </div>
             """, unsafe_allow_html=True)
-
-        with st.container():
+            
             col1, col2, col3 = st.columns([1, 2, 1])
             with col2:
                 if st.button("Get Started"):
