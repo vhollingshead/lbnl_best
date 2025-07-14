@@ -373,7 +373,7 @@ def home():
 
     # ---- DOWN Container ----
     with st.container():
-        left_col, right_col = st.columns(2)
+        left_col, right_col = st.columns([1.2, .8])
 
         with left_col:
             st.write("")
@@ -382,7 +382,7 @@ def home():
                 """
                 <br>
                 <div style="background-color: #f0f0f0; padding: 2em; border-radius: 8px;">
-                    <p style="color: #666;"><span style="font-size: 1.5em;"><b>Your Business Data Remains Private</b></span><br>
+                    <p style="color: #666;"><span style="font-size: 1.5em;"><b>Your Privacy is Important to Us</b></span><br>
                     <br>
                     We understand that business data can be sensitive and proprietary. This tool is designed with your confidentiality in mind. All processing happens locally in your browser — <b> no data is collected or stored on our servers.</b>
                     <br>
