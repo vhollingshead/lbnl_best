@@ -404,10 +404,8 @@ def home():
             st.write("")
             
             with st.form(key="report_form"):
-                title = st.text_input("Report Title")
-                st.write("")
+                title = st.text_input("BEST Report Title")
                 today = st.date_input("Date", value=date.today(), disabled=True)
-                st.write("")
                 assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
                 st.write("")
                 left, center, right = st.columns([1, 1, 1])
