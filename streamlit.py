@@ -332,6 +332,15 @@ import base64
 from datetime import date
 st.set_page_config(layout="wide")
 
+        # Set custom background color
+        # st.markdown("""
+        #     <style>
+        #     body, .main, .block-container, header, footer, .stSidebar {
+        #         background-color: #1d392b !important;
+        #     }
+        #     </style>
+        # """, unsafe_allow_html=True)
+
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -348,28 +357,6 @@ with open("green_left_best_xhigh.png", "rb") as img_file:
 def home():
     # ---- UP Container ----
     with st.container():
-        # Set custom background color
-        # st.markdown("""
-        #     <style>
-        #     body, .main, .block-container, header, footer, .stSidebar {
-        #         background-color: #1d392b !important;
-        #     }
-        #     </style>
-        # """, unsafe_allow_html=True)
-
-        st.markdown(
-        """
-        <style>
-        .top-container {
-            background-color: #1d392b;
-            padding: 2em;
-            border-radius: 8px;
-        }
-        </style>
-        <div class="top-container">
-        """,
-        unsafe_allow_html=True
-    )
 
         st.markdown(f"""
             <div style="
@@ -412,20 +399,13 @@ def home():
 
         # Right Column - Form
         with right_col:
-            st.markdown(
-                """
-                <div style="background-color: #f0f0f0; padding: 2em; border-radius: 8px;">
-                """,
-                unsafe_allow_html=True
-            )
-
+            
             with st.form(key="report_form"):
                 title = st.text_input("Report Title")
                 today = st.date_input("Date", value=date.today(), disabled=True)
                 assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
                 submitted = st.form_submit_button("Get Started")
 
-            st.markdown("</div>", unsafe_allow_html=True)
 
             if submitted:
                 st.session_state.report_title = title
