@@ -344,7 +344,7 @@ st.set_page_config(layout="wide")
 def home():
     # ---- UP Container ----
     with st.container():
-        st.image("cement_left_best.png", use_column_width=True)  
+        st.image("cement_left_best.png", use_container_width=True)  
 
     # ---- DOWN Container ----
     with st.container():
