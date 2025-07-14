@@ -332,15 +332,6 @@ import base64
 from datetime import date
 st.set_page_config(layout="wide")
 
-# Set custom background color
-st.markdown("""
-    <style>
-    body, .main, .block-container, header, footer, .stSidebar {
-        background-color: #1d392b !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 # Load and encode image
 with open("best_all_green_xhigh.png", "rb") as img_file:
     encoded_best_high = base64.b64encode(img_file.read()).decode()
@@ -348,8 +339,15 @@ with open("best_all_green_xhigh.png", "rb") as img_file:
 def home():
     # ---- UP Container ----
     with st.container():
-        # st.image("best_all_green_xhigh.png", use_container_width=True)  
-        # Background image container with no padding
+        # Set custom background color
+        st.markdown("""
+            <style>
+            body, .main, .block-container, header, footer, .stSidebar {
+                background-color: #1d392b !important;
+            }
+            </style>
+        """, unsafe_allow_html=True)
+        
         st.markdown(f"""
             <div style="
                 background-image: url('data:image/png;base64,{encoded_best_high}');
