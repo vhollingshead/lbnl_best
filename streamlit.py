@@ -368,10 +368,17 @@ def home():
         left_col, right_col = st.columns(2)
 
         with left_col:
+            st.write("")
+            
             st.markdown(
                 """
+                <br>
                 <div style="background-color: #f0f0f0; padding: 2em; border-radius: 8px;">
-                    <p style="color: #666;">Insert text here</p>
+                    <p style="color: #666;"><b>Your Business Data Remains Private</b>
+                    We understand that business data can be sensitive and proprietary. This tool is designed with your confidentiality in mind. All processing happens locally in your browser — <b> no data is collected or stored on our servers.</b>
+                    For this reason, all data must be entered in <b>one sitting</b>. Once you close or refresh the page, your inputs will be cleared to ensure your information is never retained.
+                    You can use the tool with full confidence that your <b> inputs stay secure and entirely under your control. </b> We do not track, share, or retain any information you enter.
+                    </p>
                 </div>
                 """,
                 unsafe_allow_html=True
