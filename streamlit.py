@@ -399,10 +399,6 @@ def home():
 
         # Right Column - Form
         with right_col:
-
-            st.write("")
-            st.write("Let's get started!")
-            st.write("")
             st.write("")
             
             with st.form(key="report_form"):
