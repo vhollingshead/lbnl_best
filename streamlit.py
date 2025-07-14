@@ -423,6 +423,9 @@ def get_started():
     st.subheader("Preview of Entered Data")
     st.write(st.session_state.raw_materials_df)
 
+
+##### Page Routing #####
+
 # Initial state
 if "page" not in st.session_state:
     st.session_state.page = "Home"
