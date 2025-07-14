@@ -344,7 +344,7 @@ st.markdown("""
 def home():
     # ---- UP Container ----
     with st.container():
-        st.image("best_all_green.png", use_container_width=True)  
+        st.image("best.png", use_container_width=True)  
 
     # ---- DOWN Container ----
     with st.container():
