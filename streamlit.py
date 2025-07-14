@@ -341,14 +341,7 @@ st.set_page_config(layout="wide")
         #     </style>
         # """, unsafe_allow_html=True)
 
-# Removes auto hint on form fields
-st.markdown("""
-    <style>
-    .stTextInput > div > div > input:focus + div {
-        display: none;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+
 
 hide_st_style = """
             <style>
@@ -414,7 +407,17 @@ def home():
             
             with st.form(key="report_form"):
                 st.markdown("#### Begin BEST Assessment")
-                title = st.text_input("BEST Assessment Title")
+
+                # Removes auto hint on form fields
+                st.markdown("""
+                    <style>
+                    .stTextInput > div > div > input:focus + div {
+                        display: none;
+                    }
+                    </style>
+                    """, unsafe_allow_html=True)
+                
+                assessment_title = st.text_input("BEST Assessment Title")
                 # today = st.date_input("Date", value=date.today(), disabled=True)
                 assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
                 left, center, right = st.columns([1, 1, 1])
@@ -423,7 +426,7 @@ def home():
 
 
             if submitted:
-                st.session_state.report_title = title
+                st.session_state.report_title = assessment_title
                 st.session_state.assessment_type = assessment_type
                 st.session_state.page = "Get Started"
 
