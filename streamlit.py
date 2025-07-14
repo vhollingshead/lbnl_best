@@ -341,10 +341,27 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Load and encode image
+with open("best_all_green_xhigh.png", "rb") as img_file:
+    encoded_best_high = base64.b64encode(img_file.read()).decode()
+
 def home():
     # ---- UP Container ----
     with st.container():
-        st.image("best_all_green_xhigh.png", use_container_width=True)  
+        # st.image("best_all_green_xhigh.png", use_container_width=True)  
+        # Background image container with no padding
+        st.markdown(f"""
+            <div style="
+                background-image: url('data:image/png;base64,{encoded_best_high}');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;">
+        </div>
+    """, unsafe_allow_html=True)
 
     # ---- DOWN Container ----
     with st.container():
