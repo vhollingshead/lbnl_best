@@ -366,7 +366,7 @@ def home():
                 </div>
             """, unsafe_allow_html=True)
 
-            col1, col2, col3 = st.columns([1, 2, 1])
+            col1, col2, col3 = st.columns([1, 3, 1])
             with col2:
                 if st.button("Get Started"):
                     st.session_state.page = "Get Started"
