@@ -401,7 +401,7 @@ def home():
         with right_col:
             st.write("")
             st.write("")
-            st.write("")
+            # st.write("")
             
             with st.form(key="report_form"):
                 st.markdown("#### Begin BEST Assessment")
