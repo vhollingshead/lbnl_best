@@ -400,12 +400,15 @@ def home():
         # Right Column - Form
         with right_col:
             st.write("")
+            st.write("")
             
             with st.form(key="report_form"):
                 title = st.text_input("Report Title")
                 today = st.date_input("Date", value=date.today(), disabled=True)
                 assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
-                submitted = st.form_submit_button("Get Started")
+                left, center, right = st.columns([1, 1, 1])
+                with center:
+                    submitted = st.form_submit_button("Get Started")
 
 
             if submitted:
