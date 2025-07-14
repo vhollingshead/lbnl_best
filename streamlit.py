@@ -342,7 +342,7 @@ hide_st_style = """
 st.markdown(hide_st_style, unsafe_allow_html=True)
 
 # Load and encode image
-with open("best_all_green_xhigh.png", "rb") as img_file:
+with open("green_left_best.png", "rb") as img_file:
     encoded_best_high = base64.b64encode(img_file.read()).decode()
 
 def home():
