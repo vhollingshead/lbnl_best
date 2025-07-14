@@ -406,9 +406,8 @@ def home():
             with st.form(key="report_form"):
                 st.markdown("#### Begin BEST Assessment")
                 title = st.text_input("BEST Assessment Title")
-                today = st.date_input("Date", value=date.today(), disabled=True)
+                # today = st.date_input("Date", value=date.today(), disabled=True)
                 assessment_type = st.selectbox("Assessment Type", ["Detailed Assessment", "Quick Assessment"])
-                st.write("")
                 left, center, right = st.columns([1, 1, 1])
                 with center:
                     submitted = st.form_submit_button("Get Started")
