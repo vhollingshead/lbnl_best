@@ -330,6 +330,8 @@ import streamlit as st
 from PIL import Image
 import base64
 from datetime import date
+import pandas as pd
+
 st.set_page_config(layout="wide")
 
         # Set custom background color
@@ -467,9 +469,14 @@ def get_started():
             f"Other 2 - {other2_type}": other2_amount
         }
 
-        # Display preview
+        # Convert to DataFrame for display
+        df_preview = pd.DataFrame.from_dict(st.session_state.raw_materials_df, orient='index', columns=['Amount (tonnes)'])
+        df_preview.index.name = "Material"
+        df_preview = df_preview.reset_index()
+
+        # Display as pretty table
         st.subheader("Preview of Entered Data")
-        st.write(st.session_state.raw_materials_df)
+        st.dataframe(df_preview.style.format({"Amount (tonnes)": "{:,.2e}"}), use_container_width=True)
 
 
 
