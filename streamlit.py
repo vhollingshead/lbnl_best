@@ -544,10 +544,8 @@ def get_started():
 
         if back_clicked:
             st.session_state.page = "Home"
-            st.experimental_rerun()
         elif next_clicked:
             st.session_state.page = "Energy Input Sheet"
-            st.experimental_rerun()
 
 def energy_input_sheet():
     st.markdown("### Energy Input Sheet")
