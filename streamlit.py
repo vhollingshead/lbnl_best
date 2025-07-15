@@ -534,20 +534,20 @@ def get_started():
 
     # ---- Third Container ----
     with st.container():
-        left_buttons, center_buttons, right_buttons = st.columns([1,1,1])
-        
-        with left_buttons:
-            # include back button
-            st.button("Back")   
-        with center_buttons:
-            # go to next page
-            if st.button("Next"):
-                st.session_state.page = "Energy Input Sheet"
+        left_col, spacer, right_col = st.columns([1, 6, 1])
 
-        if st.button("Next"):
-            st.session_state.page = "Energy Input Sheet"
-        elif st.button("Back"):
+        with left_col:
+            back_clicked = st.button("Back")
+
+        with right_col:
+            next_clicked = st.button("Next")
+
+        if back_clicked:
             st.session_state.page = "Home"
+            st.experimental_rerun()
+        elif next_clicked:
+            st.session_state.page = "Energy Input Sheet"
+            st.experimental_rerun()
 
 def energy_input_sheet():
     st.markdown("### Energy Input Sheet")
