@@ -439,7 +439,7 @@ def get_started():
     # ---- First Container ----
     with st.container():
         # create three columns
-        left, center, right = st.columns([1, 1, 1])
+        left, center, right = st.columns([.15, .7, .15])
         with center:
             with st.form("raw_materials_form"):
                 st.markdown("### Enter Raw Material Inputs")
