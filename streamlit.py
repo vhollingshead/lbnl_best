@@ -462,7 +462,7 @@ def get_started():
                 other2_type = st.text_input("Other 2 - Additive Type")
                 other2_amount = st.number_input("Other 2 - Amount (tonnes)", format="%e")
 
-                left_raw, center_raw, right_raw = st.columns([.15, .7, .15])
+                left_raw, center_raw, right_raw = st.columns([1,1,1])
                 with center_raw:
                     submitted = st.form_submit_button("Submit Raw Material Data")
 
@@ -498,7 +498,7 @@ def get_started():
                 "Other (Specify)"
             ]
 
-            left, center, right = st.columns([1,1,1])
+            left, center, right = st.columns([.15, .7, .15])
             
             with center:
                 num_kilns = st.number_input("How many kilns are at your facility?", min_value=1, max_value=10, step=1, key="num_kilns")
