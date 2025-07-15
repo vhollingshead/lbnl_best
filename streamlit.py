@@ -553,8 +553,47 @@ def energy_input_sheet():
     
     """)
 
+    import pdfkit
+    import tempfile
+    import os
 
+    df = pd.DataFrame({
+        "Name": ["Alice", "Bob", "Charlie"],
+        "Score": [85, 90, 95]
+    })
 
+    st.dataframe(df)
+
+    if st.button("Export DataFrame to PDF"):
+        # Convert DataFrame to HTML
+        html = df.to_html(index=False)
+
+        # Add simple styling
+        html = f"""
+        <html>
+        <head>
+        <style>
+        table, th, td {{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 8px;
+        }}
+        </style>
+        </head>
+        <body>
+        <h2>DataFrame Report</h2>
+        {html}
+        </body>
+        </html>
+        """
+
+        # Create a temp file
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmpfile:
+            pdfkit.from_string(html, tmpfile.name)
+            with open(tmpfile.name, "rb") as f:
+                st.download_button("Download PDF", f, file_name="dataframe_report.pdf")
+
+            os.unlink(tmpfile.name)  # Clean up the temp file
 
 
 ##### Page Routing #####
