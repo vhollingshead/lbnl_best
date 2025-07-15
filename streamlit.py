@@ -485,6 +485,7 @@ def get_started():
     with st.container():
         # Define kiln types
         kiln_types = [
+            "Select Kiln Type",
             "Wet Process Kiln",
             "Dry Process Kiln",
             "Preheater Kiln",
@@ -527,6 +528,13 @@ def get_started():
             st.dataframe(df_clinker.style.format({"Clinker Produced (tonnes/year)": "{:,.2f}"}), use_container_width=True)
             st.session_state.clinker_df = df_clinker
 
+    # ---- Third Container ----
+    with st.container():
+        st.markdown("### Preview of Entered Data")
+        st.markdown("""
+        
+        """)
+        
         
 
 
