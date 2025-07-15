@@ -498,7 +498,7 @@ def get_started():
                 "Other (Specify)"
             ]
 
-            left, center, right = st.columns([.15, .7, .15])
+            left, center, right = st.columns([1,1,1])
             
             with center:
                 num_kilns = st.number_input("How many kilns are at your facility?", min_value=1, max_value=10, step=1, key="num_kilns")
@@ -522,7 +522,7 @@ def get_started():
                         })
                         st.markdown("---")
 
-                    left_clinker, center_clinker, right_clinker = st.columns([.15, .7, .15])
+                    left_clinker, center_clinker, right_clinker = st.columns([1,1,1])
                     with center_clinker:
                         clinker_submitted = st.form_submit_button("Submit Clinker Data")
 
