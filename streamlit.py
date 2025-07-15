@@ -462,8 +462,9 @@ def get_started():
                 other2_type = st.text_input("Other 2 - Additive Type")
                 other2_amount = st.number_input("Other 2 - Amount (tonnes)", format="%e")
 
-                # Submit button
-                submitted = st.form_submit_button("Submit Raw Material Data")
+                left_raw, center_raw, right_raw = st.columns([.15, .7, .15])
+                with center_raw:
+                    submitted = st.form_submit_button("Submit Raw Material Data")
 
                 if submitted:
                     # Store inputs in session state
@@ -503,12 +504,7 @@ def get_started():
                 num_kilns = st.number_input("How many kilns are at your facility?", min_value=1, max_value=10, step=1, key="num_kilns")
 
                 with st.form("clinker_production_form"):
-                    
-                    st.markdown("""
-                    3. Select kiln type for each kiln at your facility from the drop-down list.  
-                    4. Enter amount of clinker produced from each kiln type below.  
-                    *(in tonnes of clinker produced per year)*  
-                    """)
+                
 
                     clinker_data = []
 
@@ -526,7 +522,9 @@ def get_started():
                         })
                         st.markdown("---")
 
-                    clinker_submitted = st.form_submit_button("Submit Clinker Data")
+                        left_clinker, center_clinker, right_clinker = st.columns([.15, .7, .15])
+                        with center_clinker:
+                            clinker_submitted = st.form_submit_button("Submit Clinker Data")
 
                 if clinker_submitted:
                     df_clinker = pd.DataFrame(clinker_data)
