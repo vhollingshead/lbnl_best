@@ -534,8 +534,25 @@ def get_started():
         st.markdown("""
         
         """)
-        
-        
+
+        # include next button
+        st.button("Next")
+
+        # include back button
+        st.button("Back")   
+        # go to next page
+        if st.button("Next"):
+            st.session_state.page = "Energy Input Sheet"
+        elif st.button("Back"):
+            st.session_state.page = "Home"
+
+def energy_input_sheet():
+    st.markdown("### Energy Input Sheet")
+    st.markdown("""
+    
+    """)
+
+
 
 
 
@@ -548,6 +565,8 @@ if "page" not in st.session_state:
 # Page routing
 if st.session_state.page == "Get Started":
     get_started()
+elif st.session_state.page == "Energy Input Sheet":
+    energy_input_sheet()
 elif st.session_state.page == "Home":
     home()
 
