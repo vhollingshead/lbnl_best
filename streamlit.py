@@ -446,21 +446,21 @@ def get_started():
                 
 
                 # Input fields
-                limestone = st.number_input("Limestone used (tonnes)", min_value=0.0, step=100.0, format="%e")
-                clay = st.number_input("Clay used (tonnes)", min_value=0.0, step=10.0, format="%e")
+                limestone = st.number_input("Limestone used (tonnes)", format="%e")
+                clay = st.number_input("Clay used (tonnes)", format="%e")
 
                 default_iron_ore = 9.0
-                iron_ore = st.number_input("Iron Ore used (tonnes)", min_value=0.0, step=10.0, format="%e",
+                iron_ore = st.number_input("Iron Ore used (tonnes)", format="%e",
                                         value=default_iron_ore, key="iron_ore")
 
                 default_fly_ash = 9.0
-                fly_ash = st.number_input("Fly Ash used (tonnes)", min_value=0.0, step=10.0, format="%e",
+                fly_ash = st.number_input("Fly Ash used (tonnes)", format="%e",
                                         value=default_fly_ash, key="fly_ash")
 
                 other1_type = st.text_input("Other 1 - Additive Type")
-                other1_amount = st.number_input("Other 1 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
+                other1_amount = st.number_input("Other 1 - Amount (tonnes)", format="%e")
                 other2_type = st.text_input("Other 2 - Additive Type")
-                other2_amount = st.number_input("Other 2 - Amount (tonnes)", min_value=0.0, step=10.0, format="%e")
+                other2_amount = st.number_input("Other 2 - Amount (tonnes)", format="%e")
 
                 # Submit button
                 submitted = st.form_submit_button("Submit Raw Material Data")
