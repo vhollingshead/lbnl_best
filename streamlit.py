@@ -438,8 +438,11 @@ def home():
 def get_started():
     # ---- First Container ----
     with st.container():
-        with st.form("raw_materials_form"):
-            st.markdown("### Enter Raw Material Inputs")
+        # create three columns
+        left, center, right = st.columns([1, 1, 1])
+        with center:
+            with st.form("raw_materials_form"):
+                st.markdown("### Enter Raw Material Inputs")
 
             # Input fields
             limestone = st.number_input("Limestone used (tonnes)", min_value=0.0, step=100.0, format="%e")
@@ -482,51 +485,51 @@ def get_started():
                 st.dataframe(df_preview.style.format({"Amount (tonnes)": "{:,.2e}"}), use_container_width=True)
 
     # ---- Second Container ----
-    with st.container():
-        # Define kiln types
-        kiln_types = [
-            "Select Kiln Type",
-            "Wet Process Kiln",
-            "Dry Process Kiln",
-            "Preheater Kiln",
-            "Precalciner Kiln",
-            "Other (Specify)"
-        ]
+        with st.container():
+            # Define kiln types
+            kiln_types = [
+                "Select Kiln Type",
+                "Wet Process Kiln",
+                "Dry Process Kiln",
+                "Preheater Kiln",
+                "Precalciner Kiln",
+                "Other (Specify)"
+            ]
 
-        # Let user choose number of kilns
-        num_kilns = st.number_input("How many kilns are at your facility?", min_value=1, max_value=10, step=1, key="num_kilns")
+            # Let user choose number of kilns
+            num_kilns = st.number_input("How many kilns are at your facility?", min_value=1, max_value=10, step=1, key="num_kilns")
 
-        with st.form("clinker_production_form"):
-            st.markdown("### Clinker Production")
-            st.markdown("""
-            3. Select kiln type for each kiln at your facility from the drop-down list.  
-            4. Enter amount of clinker produced from each kiln type below.  
-            *(in tonnes of clinker produced per year)*  
-            """)
+            with st.form("clinker_production_form"):
+                st.markdown("### Clinker Production")
+                st.markdown("""
+                3. Select kiln type for each kiln at your facility from the drop-down list.  
+                4. Enter amount of clinker produced from each kiln type below.  
+                *(in tonnes of clinker produced per year)*  
+                """)
 
-            clinker_data = []
+                clinker_data = []
 
-            for i in range(num_kilns):
-                st.markdown(f"**Kiln {i + 1}**")
-                cols = st.columns([2, 2])
-                with cols[0]:
-                    kiln = st.selectbox(f"Kiln Type {i + 1}", kiln_types, key=f"kiln_type_{i}")
-                with cols[1]:
-                    amount = st.number_input(f"Clinker Produced (tonnes/year) for Kiln {i + 1}", min_value=0.0, step=100.0, key=f"clinker_amt_{i}")
-                clinker_data.append({
-                    "Kiln #": i + 1,
-                    "Kiln Type": kiln,
-                    "Clinker Produced (tonnes/year)": amount
-                })
-                st.markdown("---")
+                for i in range(num_kilns):
+                    st.markdown(f"**Kiln {i + 1}**")
+                    cols = st.columns([2, 2])
+                    with cols[0]:
+                        kiln = st.selectbox(f"Kiln Type {i + 1}", kiln_types, key=f"kiln_type_{i}")
+                    with cols[1]:
+                        amount = st.number_input(f"Clinker Produced (tonnes/year) for Kiln {i + 1}", min_value=0.0, step=100.0, key=f"clinker_amt_{i}")
+                    clinker_data.append({
+                        "Kiln #": i + 1,
+                        "Kiln Type": kiln,
+                        "Clinker Produced (tonnes/year)": amount
+                    })
+                    st.markdown("---")
 
-            clinker_submitted = st.form_submit_button("Submit Clinker Data")
+                clinker_submitted = st.form_submit_button("Submit Clinker Data")
 
-        if clinker_submitted:
-            df_clinker = pd.DataFrame(clinker_data)
-            st.subheader("Preview of Clinker Production Data")
-            st.dataframe(df_clinker.style.format({"Clinker Produced (tonnes/year)": "{:,.2f}"}), use_container_width=True)
-            st.session_state.clinker_df = df_clinker
+            if clinker_submitted:
+                df_clinker = pd.DataFrame(clinker_data)
+                st.subheader("Preview of Clinker Production Data")
+                st.dataframe(df_clinker.style.format({"Clinker Produced (tonnes/year)": "{:,.2f}"}), use_container_width=True)
+                st.session_state.clinker_df = df_clinker
 
     # ---- Third Container ----
     with st.container():
