@@ -3,3 +3,6 @@ streamlit-option-menu
 pandas
 matplotlib
 fpdf
+pdfkit
+tempfile
+os
