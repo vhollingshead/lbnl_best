@@ -331,6 +331,9 @@ from PIL import Image
 import base64
 from datetime import date
 import pandas as pd
+import pdfkit
+import tempfile
+import os
 
 st.set_page_config(layout="wide")
 
@@ -407,7 +410,7 @@ def home():
             st.write("")
             # st.write("")
             
-            with st.form(key="report_form"):
+            with st.form(key="report_form", enter_to_submit=False):
                 st.markdown("#### Begin BEST Assessment")
 
                 # Removes auto hint on form fields
@@ -552,10 +555,6 @@ def energy_input_sheet():
     st.markdown("""
     
     """)
-
-    import pdfkit
-    import tempfile
-    import os
 
     df = pd.DataFrame({
         "Name": ["Alice", "Bob", "Charlie"],
