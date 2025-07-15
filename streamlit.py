@@ -442,7 +442,7 @@ def get_started():
         # create three columns
         left, center, right = st.columns([.15, .7, .15])
         with center:
-            with st.form("raw_materials_form"):
+            with st.form("raw_materials_form", enter_to_submit=False):
                 
 
                 # Input fields
@@ -503,7 +503,7 @@ def get_started():
             with center:
                 num_kilns = st.number_input("How many kilns are at your facility?", min_value=1, max_value=10, step=1, key="num_kilns")
 
-                with st.form("clinker_production_form"):
+                with st.form("clinker_production_form", enter_to_submit=False):
                 
 
                     clinker_data = []
