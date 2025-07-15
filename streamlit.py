@@ -534,17 +534,16 @@ def get_started():
 
     # ---- Third Container ----
     with st.container():
-        st.markdown("### Preview of Entered Data")
-        st.markdown("""
+        left_buttons, center_buttons, right_buttons = st.columns([1,1,1])
         
-        """)
+        with left_buttons:
+            # include back button
+            st.button("Back")   
+        with center_buttons:
+            # go to next page
+            if st.button("Next"):
+                st.session_state.page = "Energy Input Sheet"
 
-        # include next button
-        st.button("Next")
-
-        # include back button
-        st.button("Back")   
-        # go to next page
         if st.button("Next"):
             st.session_state.page = "Energy Input Sheet"
         elif st.button("Back"):
