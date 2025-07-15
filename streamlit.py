@@ -331,9 +331,9 @@ from PIL import Image
 import base64
 from datetime import date
 import pandas as pd
-import pdfkit
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus import SimpleDocTemplate, Table
 import tempfile
-import os
 
 st.set_page_config(layout="wide")
 
@@ -563,36 +563,16 @@ def energy_input_sheet():
 
     st.dataframe(df)
 
-    if st.button("Export DataFrame to PDF"):
-        # Convert DataFrame to HTML
-        html = df.to_html(index=False)
-
-        # Add simple styling
-        html = f"""
-        <html>
-        <head>
-        <style>
-        table, th, td {{
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 8px;
-        }}
-        </style>
-        </head>
-        <body>
-        <h2>DataFrame Report</h2>
-        {html}
-        </body>
-        </html>
-        """
-
-        # Create a temp file
+    if st.button("Export to PDF"):
         with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmpfile:
-            pdfkit.from_string(html, tmpfile.name)
+            doc = SimpleDocTemplate(tmpfile.name, pagesize=letter)
+            table_data = [df.columns.tolist()] + df.values.tolist()
+            table = Table(table_data)
+            doc.build([table])
+
             with open(tmpfile.name, "rb") as f:
                 st.download_button("Download PDF", f, file_name="dataframe_report.pdf")
 
-            os.unlink(tmpfile.name)  # Clean up the temp file
 
 
 ##### Page Routing #####
