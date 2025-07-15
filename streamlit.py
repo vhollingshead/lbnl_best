@@ -522,15 +522,15 @@ def get_started():
                         })
                         st.markdown("---")
 
-                left_clinker, center_clinker, right_clinker = st.columns([.15, .7, .15])
-                with center_clinker:
-                    clinker_submitted = st.form_submit_button("Submit Clinker Data")
+                    left_clinker, center_clinker, right_clinker = st.columns([.15, .7, .15])
+                    with center_clinker:
+                        clinker_submitted = st.form_submit_button("Submit Clinker Data")
 
-                if clinker_submitted:
-                    df_clinker = pd.DataFrame(clinker_data)
-                    st.subheader("Preview of Clinker Production Data")
-                    st.dataframe(df_clinker.style.format({"Clinker Produced (tonnes/year)": "{:,.2f}"}), use_container_width=True)
-                    st.session_state.clinker_df = df_clinker
+                    if clinker_submitted:
+                        df_clinker = pd.DataFrame(clinker_data)
+                        st.subheader("Preview of Clinker Production Data")
+                        st.dataframe(df_clinker.style.format({"Clinker Produced (tonnes/year)": "{:,.2f}"}), use_container_width=True)
+                        st.session_state.clinker_df = df_clinker
 
     # ---- Third Container ----
     with st.container():
